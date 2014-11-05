@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(params.require(:event).permit(:title, :description, :start_date, :end_date))
+		@event = Event.new(params.require(:event).permit(:title, :description, :start_date, :end_date, :address, :city, :postcode))
 		@event.save
 		redirect_to '/events'
 	end

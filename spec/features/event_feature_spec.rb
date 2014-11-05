@@ -34,5 +34,19 @@ describe 'event' do
 			click_button 'Submit'
 			expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
 		end
+
+		it 'includes the address of the event.' do
+			visit 'events/new' 
+			fill_in 'Title', with: 'Event 1'
+			fill_in 'Description', with: 'Really Cool Event'
+			fill_in 'City', with: 'London'
+			fill_in 'Postcode', with: 'N7 9JN'
+			fill_in 'Address', with: 'Freegrove Road'
+			select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
+			select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
+			click_button 'Submit'
+			expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
+			expect(page).to have_content 'Freegrove Road - London - N7 9JN'
+		end
 	end
 end
