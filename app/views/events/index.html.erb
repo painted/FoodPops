@@ -1,1 +1,12 @@
+<% if @events.any? %>
+	<% @events.each do |event| %>
+		<p>
+			<%= event.title %> - <%= event.description %> 
+		</p>
+		<p>
+			goes from <%= event.start_date %> to <%= event.end_date %> 
+		</p>
+		<% end %>
+<% else %>
 No Events Yet Please Help
+<% end %>
