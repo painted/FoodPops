@@ -10,8 +10,11 @@
 		<p>
 			<%= event.address %> - <%= event.city %> - <%= event.postcode %>
 		</p>
+		<p>
+			posted by <%= event.foody.username %>.
+		</p>
 		<% end %>
 <% else %>
 No Events Yet Please Help
 <% end %>
-<%= link_to 'Create event', new_event_path, id: "", class: "" %>
+<%= link_to 'Create event', new_event_path, id: "", class: "" %>s

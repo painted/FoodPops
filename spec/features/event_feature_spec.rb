@@ -17,7 +17,8 @@ describe 'event' do
 		end
 
 		it 'with one event' do
-			Event.create(title: 'test event', description: 'test description', 
+			bob = Foody.create email: 's@s.com', password: '12345678', password_confirmation: '12345678', username: 'bob'
+			bob.events.create(title: 'test event', description: 'test description', 
 				start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00"))
 			visit '/events'
 			expect(page).to have_content 'test event - test description goes from 2014-11-05 12:00:00 UTC to 2014-11-07 14:00:00 UTC'
@@ -27,7 +28,7 @@ describe 'event' do
 	context 'logged in' do
 		
 		before do  
-			bob = Foody.create email: 's@s.com', password: '12345678', password_confirmation: '12345678'
+			bob = Foody.create email: 's@s.com', password: '12345678', password_confirmation: '12345678', username: 'bob'
 			login_as bob
 		end
 
@@ -54,6 +55,16 @@ describe 'event' do
 				click_button 'Submit'
 				expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
 				expect(page).to have_content 'Freegrove Road - London - N7 9JN'
+			end
+
+			it 'includes the username of the foody that created the event.' do
+				visit 'events/new' 
+				fill_in 'Title', with: 'Event 1'
+				fill_in 'Description', with: 'Really Cool Event'
+				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
+				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
+				click_button 'Submit'
+				expect(page).to have_content 'posted by bob.'
 			end
 		end
 	end
