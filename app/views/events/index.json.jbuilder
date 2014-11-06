@@ -3,4 +3,6 @@ json.array! @events.each do |event|
 	json.address event.address
 	json.city event.city
 	json.postcode event.postcode
+	json.lat event.lat
+	json.lng event.lng
 end
