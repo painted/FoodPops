@@ -12,9 +12,27 @@
  *
  *= require_tree .
  *= require_self
+ *= require purecss
  */
 
- #map {
+#map {
  	width: 600px;
  	height: 400px;
- }
+}
+
+.header .pure-menu {
+    border-bottom-color: black;
+    border-radius: 0;
+}
+
+body {
+    color: #666;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: #111;
+}
+
+.login-menu {
+	text-align: right;
+}

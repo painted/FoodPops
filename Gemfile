@@ -29,6 +29,8 @@ gem 'spring',        group: :development
 gem "geocoder"
 
 gem 'devise'
+
+gem 'purecss-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
