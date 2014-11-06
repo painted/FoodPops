@@ -24,29 +24,46 @@ describe 'event' do
 		end
 	end
 
-	context 'addition by form' do 
-		it 'includes title, description, start_date and end_date' do 
-			visit 'events/new' 
-			fill_in 'Title', with: 'Event 1'
-			fill_in 'Description', with: 'Really Cool Event'
-			select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
-			select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
-			click_button 'Submit'
-			expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
+	context 'logged in' do
+		
+		before do  
+			bob = Foody.create email: 's@s.com', password: '12345678', password_confirmation: '12345678'
+			login_as bob
 		end
 
-		it 'includes the address of the event.' do
-			visit 'events/new' 
-			fill_in 'Title', with: 'Event 1'
-			fill_in 'Description', with: 'Really Cool Event'
-			fill_in 'City', with: 'London'
-			fill_in 'Postcode', with: 'N7 9JN'
-			fill_in 'Address', with: 'Freegrove Road'
-			select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
-			select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
-			click_button 'Submit'
-			expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
-			expect(page).to have_content 'Freegrove Road - London - N7 9JN'
+		context 'addition by form' do 
+			it 'includes title, description, start_date and end_date' do 
+				visit 'events/new' 
+				fill_in 'Title', with: 'Event 1'
+				fill_in 'Description', with: 'Really Cool Event'
+				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
+				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
+				click_button 'Submit'
+				expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
+			end
+
+			it 'includes the address of the event.' do
+				visit 'events/new' 
+				fill_in 'Title', with: 'Event 1'
+				fill_in 'Description', with: 'Really Cool Event'
+				fill_in 'City', with: 'London'
+				fill_in 'Postcode', with: 'N7 9JN'
+				fill_in 'Address', with: 'Freegrove Road'
+				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
+				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
+				click_button 'Submit'
+				expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
+				expect(page).to have_content 'Freegrove Road - London - N7 9JN'
+			end
 		end
 	end
+
+	context 'logged out' do
+	    it 'should forward user to sign in page' do
+	        visit '/events'
+	        click_link 'Create event'
+	        expect(page).to have_content 'Sign in'
+	    end
+	end
+
 end

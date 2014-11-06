@@ -8,8 +8,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% if foody_signed_in? %>
+    <%= link_to('Logout', destroy_foody_session_path, :method => :delete) %>
+    <%= link_to('Edit Account', edit_foody_registration_path) %>
+<% else %>
+    <%= link_to('Login', new_foody_session_path) %>
+    <%= link_to('Register', new_foody_registration_path) %>
+<% end %>
 <%= yield %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 </body>
 </html>
