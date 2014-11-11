@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
 	belongs_to :foody
 	has_attached_file :image,
 	:default_url => "/images/original/missing.png",
-	styles: { thirtythree: '480X360>', sixtysix: '960X360>' },
+	styles: { thirtythree: '480X360', sixtysix: '960X720' },
 	storage: :s3,
 	s3_credentials: {
 		bucket: 'foodups',
