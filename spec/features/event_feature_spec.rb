@@ -21,7 +21,9 @@ describe 'event' do
 			bob.events.create(title: 'test event', description: 'test description', 
 				start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00"))
 			visit '/events'
-			expect(page).to have_content 'test event - test description goes from 2014-11-05 12:00:00 UTC to 2014-11-07 14:00:00 UTC'
+			expect(page).to have_content 'test event'
+			expect(page).to have_content 'test description'
+			expect(page).to have_content 'goes from 2014-11-05 12:00:00 UTC to 2014-11-07 14:00:00 UTC'
 		end
 	end
 
@@ -40,7 +42,9 @@ describe 'event' do
 				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
 				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
 				click_button 'Submit'
-				expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
+				expect(page).to have_content 'Event 1'
+				expect(page).to have_content 'Really Cool Event'
+				expect(page).to have_content 'goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
 			end
 
 			it 'includes the address of the event.' do
@@ -53,7 +57,9 @@ describe 'event' do
 				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
 				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
 				click_button 'Submit'
-				expect(page).to have_content 'Event 1 - Really Cool Event goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
+				expect(page).to have_content 'Event 1'
+				expect(page).to have_content 'Really Cool Event'
+				expect(page).to have_content 'goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
 				expect(page).to have_content 'Freegrove Road - London - N7 9JN'
 			end
 

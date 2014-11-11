@@ -11,27 +11,27 @@
 </div> -->
 <div class="pure-g">
 	<% if @events.any? %>
-		<% @events.each do |event| %>
-			<div class="photo-box u-1 u-med-1-2 u-lrg-1-3">
-				<a href="/">
-					<%= image_tag event.image.url, class: 'uploaded-pic' %>
-				</a>
-				<aside class="photo-box-caption">			
-					<span>
-						<%= event.title %> - <%= event.description %> 
-					</span>
-					<span>
-						goes from <%= event.start_date %> to <%= event.end_date %> 
-					</span>
-					<span>
-						<%= event.address %> - <%= event.city %> - <%= event.postcode %>
-					</span>
-					<span>
-						posted by <%= event.foody.username %>.
-					</span>
-				</aside>
-			</div>
-		<% end %>
+	<% @events.each do |event| %>
+	<div class="photo-box u-1 u-med-1-2 u-lrg-1-3">
+		<a href="/">
+			<%= image_tag event.image.url, class: 'uploaded-pic' %>
+		</a>
+		<aside class="photo-box-caption">			
+			<p>
+				<%= event.title %> - <%= event.description %> 
+			</p>
+			<p>
+				<%= event.address %> - <%= event.city %> - <%= event.postcode %>
+			</p>
+			<p>
+				posted by <%= event.foody.username %>.
+			</p>
+			<p>
+				goes from <%= event.start_date %> to <%= event.end_date %> 
+			</p>
+		</aside>
+	</div>
+	<% end %>
 	<% else %>
 	No Events Yet Please Help
 	<% end %>
