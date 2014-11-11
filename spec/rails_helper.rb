@@ -4,7 +4,10 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/poltergeist'
+require 'aws'
 Capybara.javascript_driver = :poltergeist
+AWS.stub!
+AWS.config(:access_key_id => "TESTKEY", :secret_access_key => "TESTSECRET")
 
 include Warden::Test::Helpers
 Warden.test_mode!
