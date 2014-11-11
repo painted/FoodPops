@@ -1,60 +1,64 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	  <title>FoodPops</title>
-	  <script src='http://maps.google.com/maps/api/js?sensor=true'></script>
-	  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	  <%= csrf_meta_tags %>
-	</head>
-	<body>
-		<div class="header pure-g">
-			<div class="pure-u-2-3">
-	        	<div class="pure-menu pure-menu-open pure-menu-horizontal">
-	            
-		            <a class="pure-menu-heading" href="">FoodPops</a>
+<head>
+	<title>FoodPops</title>
+	<script src='http://maps.google.com/maps/api/js?sensor=true'></script>
+	<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="header pure-g">
+		<div class="pure-u-2-3">
+			<div class="pure-menu pure-menu-open pure-menu-horizontal">
 
-		            <ul>
-		                <li><%= link_to('Events', events_path) %></a></li>
-		                <li><a href="#">Blog</a></li>
-		                <li><a href="#">About</a></li>
-		            </ul>
-	            </div>
-	        </div>
-            <div class="pure-u-1-3 login-menu">
-            	<div class="pure-menu pure-menu-open pure-menu-horizontal">
-		            <ul>
-						<% if foody_signed_in? %>
-						    <li><%= link_to('Logout', destroy_foody_session_path, :method => :delete) %></li>
-						    <li><%= link_to('Edit Account', edit_foody_registration_path) %></li>
-						<% else %>
-						    <li><%= link_to('Login', new_foody_session_path) %></li>
-						    <li><%= link_to('Register', new_foody_registration_path) %></li>
-						<% end %>
-					</ul>
-				</div>
-            </div>
-	    </div>
-	    <div class="pure-g">
-	    	<div class="photo-box u-1 u-med-1-3 u-lrg-1-4">
-	            <a href="http://www.dillonmcintosh.tumblr.com/">
-	                <img src="http://www.foodups.guru/images/burgerbear.jpg" alt="Burger Bear">
-	            </a>
+				<a class="pure-menu-heading header-title" href="">FoodUps</a>
 
-	            <aside class="photo-box-caption">
-	                <span>Burger Bear</span>
-	            </aside>
-        	</div>
-            <div class="text-box u-1 u-med-2-3 u-lrg-3-4">
-	            <div class="l-box">
-	                <h1 class="text-box-head">FoodUps</h1>
-	                <p class="text-box-subhead">The one place to go to find all food events and pop ups.</p>
-	            </div>
-        	</div>	
-        </div>
-		<%= yield %>
-		<p class="notice"><%= notice %></p>
-		<p class="alert"><%= alert %></p>
-
-	</body>
+				<ul>
+					<li><%= link_to('Events', events_path) %></a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">About</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="pure-u-1-3 login-menu">
+			<div class="pure-menu pure-menu-open pure-menu-horizontal">
+				<ul>
+					<% if foody_signed_in? %>
+					<li><%= link_to('Logout', destroy_foody_session_path, :method => :delete) %></li>
+					<li><%= link_to('Edit Account', edit_foody_registration_path) %></li>
+					<% else %>
+					<li><%= link_to('Login', new_foody_session_path) %></li>
+					<li><%= link_to('Register', new_foody_registration_path) %></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="pure-g">
+		<div class="photo-box u-1 u-med-1-3 u-lrg-1-4">
+			<a href="/">
+				<img src="http://www.foodups.guru/images/burgerbear.jpg" alt="Burger Bear">
+			</a>
+			<aside class="photo-box-caption">
+				<span>Burger Bear</span>
+			</aside>
+		</div>
+		<div class="photo-box u-1 u-med-2-3 u-lrg-3-4">
+		<a href="/">
+				<img src="http://www.foodups.guru/images/foodfest-night-sized.jpg" alt="Burger Bear">
+		</a>
+		<h2 class="text-box-head">FoodUps</h2>
+		<p class="text-box-subhead">The one place to go to find all food events and pop ups.</p>
+			<!-- <div class="l-box title-background">
+				<h1 class="text-box-head">FoodUps</h1>
+				<p class="text-box-subhead">The one place to go to find all food events and pop ups.</p>
+			</div> -->
+		</div>	
+	</div>
+	<%= yield %>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
+</body>
 </html>
