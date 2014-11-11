@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(params.require(:event).permit(:title, :description, :start_date, :end_date, :address, :city, :postcode))
+		@event = Event.new(params.require(:event).permit(:title, :description, :start_date, :end_date, :address, :city, :postcode, :image))
 		@event.foody_id = current_foody.id
 		@event.save
 		redirect_to '/events'

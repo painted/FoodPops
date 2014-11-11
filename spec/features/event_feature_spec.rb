@@ -66,6 +66,17 @@ describe 'event' do
 				click_button 'Submit'
 				expect(page).to have_content 'posted by bob.'
 			end
+			it 'can add a photo to our events' do
+			    visit '/events/new'
+				fill_in 'Title', with: 'Event 1'
+				fill_in 'Description', with: 'Really Cool Event'
+			    attach_file 'Image', Rails.root.join('spec/images/FoodTrucks.jpg')
+			    click_button 'Submit'
+
+			    expect(current_path).to eq events_path
+			    expect(page).to have_content 'Event 1'
+			    expect(page).to have_css 'img.uploaded-pic'
+			end
 		end
 	end
 
