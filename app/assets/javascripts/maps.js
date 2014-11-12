@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	console.log('hello!');
 	$.get('/events.json', function(events){
 		var map = new GMaps({
 			div: '#map',
