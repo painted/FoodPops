@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
 	:default_url => "/images/original/missing.png",
 	styles: { thirtythree: '480X360', sixtysix: '960X720' },
 	storage: :s3,
+	:s3_protocol => :https,
 	s3_credentials: {
 		bucket: 'foodups',
 		access_key_id: Rails.application.secrets.s3_access_key,
