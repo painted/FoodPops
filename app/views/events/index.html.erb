@@ -9,8 +9,8 @@
 	    </span>
 	</aside>
 </div> -->
+<% if @events.any? %>
 <div class="pure-g">
-	<% if @events.any? %>
 	<% @events.each do |event| %>
 	<div class="photo-box u-1 u-med-1-2 u-lrg-1-3">
 		<a href="/">
@@ -32,9 +32,9 @@
 		</aside>
 	</div>
 	<% end %>
-	<% else %>
-	No Events Yet Please Help
-	<% end %>
 </div>
+<% else %>
+<%= link_to 'No Events Yet Please Help', new_event_path, id: "", class: "" %>
+<% end %>
 <div class="photo-box u-1 u-med-1-1 u-lrg-1-1" id="map"></div>
 <%= link_to 'Create event', new_event_path, id: "", class: "" %>
