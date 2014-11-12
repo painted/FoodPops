@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
 
-	geocoded_by :complete_address, :latitude  => :lat, :longitude => :lng   # can also be an IP address
-	after_validation :geocode          # auto-fetch coordinates
+	geocoded_by :complete_address, :latitude  => :lat, :longitude => :lng # can also be an IP address
+	after_validation :geocode # auto-fetch coordinates
 	belongs_to :foody
 	has_attached_file :image,
 	:default_url => "/images/original/missing.png",
