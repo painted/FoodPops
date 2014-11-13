@@ -2,29 +2,39 @@
 
 [![Code Climate](https://codeclimate.com/github/painted/FoodPops/badges/gpa.svg)](https://codeclimate.com/github/painted/FoodPops)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Please feel free to check out the current version in construction here: [Food Ups]
 
-Things you may want to cover:
+[Food Ups] is being produced to help Food Trucks, Pop Up Restaurants and Food Events let themselves be known to foodies in London.  Users can list events which will then be displayed with on a map.
 
-* Ruby version
+==========================
+###This project is being developed in various versions:
 
-* System dependencies
+##Version 1 (Live):
 
-* Configuration
+	Creation of an event model and controller with implementation of the [Google Maps API].
 
-* Database creation
+##Version 2 (Live):
 
-* Database initialization
+	User creation utilizing Devise.
 
-* How to run the test suite
+##Version 3 (Deprecated): 
 
-* Services (job queues, cache servers, search engines, etc.)
+	Seeding the database with events taken from the [Eventbrite API].
 
-* Deployment instructions
+##Future Versions include:
 
-* ...
+	*Seed database with the following APIs using a cron job: GrubClub, EatWith and  DesignMyNight  (If you are interested in being added please email me at will.allen@paintedltd.co.uk)
+
+	*Add ticket sales
+
+	*Add link to external sites for ticket sales
+
+	*Add possibility for foodies to add photos, comments and ratings to events
+
+=========================
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+[Food Ups]:https://foodups.herokuapp.com/
+[Google Maps API]:https://developers.google.com/maps/
+[Eventbrite API]:http://developer.eventbrite.com/
+
