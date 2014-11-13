@@ -1,4 +1,4 @@
-** Food Ups (formerly Food Pops)
+###Food Ups (formerly Food Pops)
 
 [![Code Climate](https://codeclimate.com/github/painted/FoodPops/badges/gpa.svg)](https://codeclimate.com/github/painted/FoodPops)
 
