@@ -2,8 +2,8 @@ $(document).ready(function(){
 	$.get('/events.json', function(events){
 		var map = new GMaps({
 			div: '#map',
-			lat: 51.5260,
-			lng: 0.0780,
+			lat: 51.496401,
+			lng: -0.142994,
 			minZoom: 2,
 			maxZoom: 16
 		});
