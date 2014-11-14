@@ -42,23 +42,23 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   
   config.before(:suite) do
-      DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
-      DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :transaction
   end
 
   config.before(:each, :js => true) do
-      DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation
   end
 
   config.before(:each) do
-      DatabaseCleaner.start
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
-      DatabaseCleaner.clean
+    DatabaseCleaner.clean
   end
 
   # RSpec Rails can automatically mix in different behaviours to your tests
@@ -75,4 +75,26 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+end
+
+def select_date_and_time(date, options = {})
+  field = options[:from]
+  select date.strftime('%Y'), :from => "#{field}_1i" #year
+  select date.strftime('%B'), :from => "#{field}_2i" #month
+  select date.strftime('%d'), :from => "#{field}_3i" #day 
+  select date.strftime('%H'), :from => "#{field}_4i" #hour
+  select date.strftime('%M'), :from => "#{field}_5i" #minute
+end
+
+def create_event
+  visit 'events/new' 
+  fill_in 'Title', with: 'Event 1'
+  fill_in 'Description', with: 'Really Cool Event'
+  fill_in 'City', with: 'London'
+  fill_in 'Postcode', with: 'N7 9JN'
+  fill_in 'Address', with: 'Freegrove Road'
+  select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
+  select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
+  attach_file 'Image', Rails.root.join('spec/images/FoodTrucks.jpg')
+  click_button 'Submit'
 end

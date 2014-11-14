@@ -1,14 +1,5 @@
 require 'rails_helper'
 
-def select_date_and_time(date, options = {})
-  field = options[:from]
-  select date.strftime('%Y'), :from => "#{field}_1i" #year
-  select date.strftime('%B'), :from => "#{field}_2i" #month
-  select date.strftime('%d'), :from => "#{field}_3i" #day 
-  select date.strftime('%H'), :from => "#{field}_4i" #hour
-  select date.strftime('%M'), :from => "#{field}_5i" #minute
-end
-
 describe 'event' do 
 	context 'initial setup' do 
 		it 'without events' do 
@@ -32,66 +23,37 @@ describe 'event' do
 		before do  
 			bob = Foody.create email: 's@s.com', password: '12345678', password_confirmation: '12345678', username: 'bob'
 			login_as bob
+			create_event
 		end
 
 		context 'addition by form' do 
 			it 'includes title, description, start_date and end_date' do 
-				visit 'events/new' 
-				fill_in 'Title', with: 'Event 1'
-				fill_in 'Description', with: 'Really Cool Event'
-				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
-				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
-				click_button 'Submit'
 				expect(page).to have_content 'Event 1'
 				expect(page).to have_content 'Really Cool Event'
 				expect(page).to have_content 'goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
 			end
 
 			it 'includes the address of the event.' do
-				visit 'events/new' 
-				fill_in 'Title', with: 'Event 1'
-				fill_in 'Description', with: 'Really Cool Event'
-				fill_in 'City', with: 'London'
-				fill_in 'Postcode', with: 'N7 9JN'
-				fill_in 'Address', with: 'Freegrove Road'
-				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
-				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
-				click_button 'Submit'
-				expect(page).to have_content 'Event 1'
-				expect(page).to have_content 'Really Cool Event'
-				expect(page).to have_content 'goes from 2014-11-10 12:00:00 UTC to 2015-12-11 14:01:00 UTC'
 				expect(page).to have_content 'Freegrove Road - London - N7 9JN'
 			end
 
 			it 'includes the username of the foody that created the event.' do
-				visit 'events/new' 
-				fill_in 'Title', with: 'Event 1'
-				fill_in 'Description', with: 'Really Cool Event'
-				select_date_and_time(Time.new(2014, 11, 10, 12, 0 ), from:'event_start_date')
-				select_date_and_time(Time.new(2015, 12, 11, 14, 1 ), from:'event_end_date')
-				click_button 'Submit'
 				expect(page).to have_content 'posted by bob.'
 			end
-			it 'can add a photo to our events' do
-			    visit '/events/new'
-				fill_in 'Title', with: 'Event 1'
-				fill_in 'Description', with: 'Really Cool Event'
-			    attach_file 'Image', Rails.root.join('spec/images/FoodTrucks.jpg')
-			    click_button 'Submit'
 
-			    expect(current_path).to eq events_path
-			    expect(page).to have_content 'Event 1'
-			    expect(page).to have_css 'img.uploaded-pic'
+			it 'can add a photo to our events' do
+				expect(current_path).to eq events_path
+				expect(page).to have_content 'Event 1'
+				expect(page).to have_css 'img.uploaded-pic'
 			end
 		end
 	end
 
 	context 'logged out' do
-	    it 'should forward user to sign in page' do
-	        visit '/events'
-	        click_link 'Create event'
-	        expect(page).to have_content 'Sign in'
-	    end
+		it 'should forward user to sign in page' do
+			visit '/events'
+			click_link 'Create event'
+			expect(page).to have_content 'Sign in'
+		end
 	end
-
 end
