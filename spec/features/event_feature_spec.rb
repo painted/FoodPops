@@ -47,6 +47,17 @@ describe 'event' do
 				expect(page).to have_css 'img.uploaded-pic'
 			end
 		end
+
+		context 'event page' do 
+			it 'shows a single event' do 
+				within '.image-link' do 
+					find('a', 'uploaded-pic').click
+				end
+				expect(current_path).to eq event_path(Event.last)
+				expect(page).to have_content 'Event 1'
+			end
+		end
+
 	end
 
 	context 'logged out' do

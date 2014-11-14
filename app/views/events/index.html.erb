@@ -12,9 +12,8 @@
 <% if @events.any? %>
 <div class="pure-g">
 	<% @events.each do |event| %>
-	<div class="photo-box u-1 u-med-1-2 u-lrg-1-3">
-		<a href="/">
-			<%= image_tag event.image.url, class: 'uploaded-pic' %>
+	<div class="photo-box u-1 u-med-1-2 u-lrg-1-3 image-link">
+		<%= link_to (image_tag event.image.url, class: 'uploaded-pic'), event_path(event) %>
 		</a>
 		<aside class="photo-box-caption">			
 			<p>
