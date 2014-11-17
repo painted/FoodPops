@@ -4,7 +4,7 @@
 
 Please feel free to check out the current version in construction here: [Food Ups]
 
-[Food Ups] is being produced to help Food Trucks, Pop Up Restaurants and Food Events let themselves be known to foodies in London.  Users can list events which will then be displayed with on a map.
+[Food Ups] is being produced to help Food Trucks, Pop Up Restaurants and Food Events let themselves be known to foodies in London.  Authorised users can list events which will then be displayed on a map.  Registered users will be able to comment, send photos and rate their experience at the events.
 
 ==========================
 ###This project is being developed in various versions:
@@ -23,13 +23,13 @@ Please feel free to check out the current version in construction here: [Food Up
 
 ##Future Versions include:
 
-	*Seed database with the following APIs using a cron job: GrubClub, EatWith and  DesignMyNight  (If you are interested in being added please email me at will.allen@paintedltd.co.uk)
+	* Seed database with the following APIs using a cron job: GrubClub, EatWith and  DesignMyNight  (If you are interested in being added please email me at will.allen@paintedltd.co.uk)
 
-	*Add ticket sales
+	* Add ticket sales
 
-	*Add link to external sites for ticket sales
+	* Add link to external sites for ticket sales
 
-	*Add possibility for foodies to add photos, comments and ratings to events
+	* Add possibility for foodies to add photos, comments and ratings to events
 
 =========================
 
