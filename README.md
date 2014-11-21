@@ -6,6 +6,8 @@ Please feel free to check out the current version in construction here: [Food Up
 
 [Food Ups] is being produced to help Food Trucks, Pop Up Restaurants and Food Events let themselves be known to foodies in London.  Authorised users can list events which will then be displayed on a map.  Registered users will be able to comment, send photos and rate their experience at the events.
 
+![FoodUps Screenshot](http://www.paintedchef.com/images/FoodUps.png)
+
 ==========================
 ###This project is being developed in various versions:
 
