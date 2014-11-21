@@ -35,7 +35,6 @@ Please feel free to check out the current version in construction here: [Food Up
 
 =========================
 
-
 [Food Ups]:https://foodups.herokuapp.com/
 [Google Maps API]:https://developers.google.com/maps/
 [Eventbrite API]:http://developer.eventbrite.com/
