@@ -2,6 +2,19 @@ require 'rails_helper'
 
 describe 'Users' do
 
+	context 'logged out' do 
+
+		before do  
+			bob = Foody.create email: 'b@s.com', password: '12345678', password_confirmation: '12345678', username: 'bob'
+		end
+
+		it 'is asked to login in order to see the list of users' do 
+			visit foodies_path
+			expect(page).not_to have_content 'bob'
+		end
+
+	end
+
 	context 'logged in' do 
 
 		before do  
@@ -17,6 +30,7 @@ describe 'Users' do
 			expect(page).to have_content 'peter'
 			expect(page).to have_content 'sam'
 		end
+
 
 	end
 
