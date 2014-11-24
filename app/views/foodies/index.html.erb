@@ -1,5 +1,6 @@
 <ul>
   <% @users.each do |user| %>
+  	<%= image_tag user.avatar.url(:thumb), class: 'uploaded-avatar' %>
     <li><%= user.username %></li>
   <% end %>
 </ul>

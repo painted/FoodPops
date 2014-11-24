@@ -31,7 +31,19 @@ describe 'Users' do
 			expect(page).to have_content 'sam'
 		end
 
-
 	end
 
+	context 'account set up' do 
+
+		it 'can add a photo avatar' do 
+			visit new_foody_registration_path
+			fill_in 'Email', with: 's@s.com'
+			fill_in 'Password', with: '12345678'
+			fill_in 'Password confirmation', with: '12345678'
+			attach_file 'Avatar', Rails.root.join('spec/images/paintedicon.png')
+			click_button 'Sign up'
+			visit foodies_path
+			expect(page).to have_css 'img.uploaded-avatar'
+		end
+	end
 end
