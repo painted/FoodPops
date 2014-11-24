@@ -1,12 +1,18 @@
-<% if @users.any? %>
-	<div class="pure-g">
-		<% @users.each do |user| %>
-		  	<div class="photo-box u-1 u-med-1-4 u-lrg-1-6 image-link">
-		  		<%= image_tag user.avatar.url(:thumb), class: 'uploaded-avatar' %>
-		  		<aside class="photo-box-caption">
-		    		<p><%= user.username %></p>
-		    	</aside>
-		    </div>
-		<% end %>
+<div class="pure-g">
+	<div class="subtitle-box u-1 u-med-1 u-lrg-1">
+		<img src="https://www.paintedchef.com/images/honeycomb-wallpaper-2560x1024.jpg" , class: 'subtitle' %>
+  		<aside class="subtitle-box-text">
+    		<p>Foodies</p>
+    	</aside>
 	</div>
-<% end %>
+	<% if @users.any? %>
+			<% @users.each do |user| %>
+			  	<div class="photo-box u-1 u-med-1-4 u-lrg-1-6 image-link">
+			  		<%= image_tag user.avatar.url(:thumb), class: 'uploaded-avatar' %>
+			  		<aside class="photo-box-caption">
+			    		<p><%= user.username %></p>
+			    	</aside>
+			    </div>
+			<% end %>
+	<% end %>
+</div>
