@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :foodies
   resources :events
+  resources :foodies, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
