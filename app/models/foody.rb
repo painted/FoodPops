@@ -4,6 +4,7 @@ class Foody < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
   has_many :events
+  attr_accessor :avatar
   has_attached_file :avatar,
 	:default_url => "/images/original/missing.png",
 	styles: { thumb: '300X300' },

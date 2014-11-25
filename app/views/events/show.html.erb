@@ -1,2 +1,20 @@
-<%= @event.title %>
+<%= @event.title %><br>
+<div class="pure-g">
+	<div class="u-1 u-med-1-2 u-lrg-1-3">
+		<%= image_tag @event.image.url, class: 'uploaded-pic' %>
+	</div>
+	<div class="u-1 u-med-1-2 u-lrg-2-3">
+			<p>
+				<%= @event.description %> 
+			</p>
+			<p>
+				<%= @event.address %> - <%= @event.city %> - <%= @event.postcode %>
+			</p>
+			<p>
+				<%= @event.start_date %> to <%= @event.end_date %> 
+			</p>
+			<p>
+				posted by <%= @event.foody.username %>.
+			</p>
+</div>	
 <div id="map-individual" data-id="<%= @event.id %>"></div>
