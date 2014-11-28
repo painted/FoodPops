@@ -17,6 +17,11 @@
 			posted by <%= @event.foody.username %>.
 		</p>
 		<p>
+			<% @event.reviews.each do |review| %>
+				<li><%= review.thoughts %> (<%= star_rating review.rating %>)</li>
+			<% end %>
+		</p>
+		<p>
 			<%= link_to "Write a review", new_event_review_path(@event) %>
 		</p>
 	</div>
