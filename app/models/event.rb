@@ -20,4 +20,9 @@ class Event < ActiveRecord::Base
 		"#{self.address}, #{self.city}, #{self.postcode}"
 	end
 
+	def average_rating
+		return '' if reviews.none?
+		reviews.average(:rating)
+	end
+
 end
