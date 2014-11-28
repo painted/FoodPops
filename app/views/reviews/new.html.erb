@@ -1,0 +1,11 @@
+<%= form_for [@event, @review] do |f| %>
+
+	<%= f.label :thoughts, 'Review' %><br>
+	<%= f.text_area :thoughts %><br>
+
+	<%= f.label :rating %><br>
+	<%= f.select :rating, 1..6 %><br>
+
+	<%= f.submit 'Submit Review' %>
+
+<% end %>

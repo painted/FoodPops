@@ -5,7 +5,7 @@ def leave_review(thoughts, rating)
 	click_link 'Write a review' 
 	fill_in 'Review', with: thoughts
 	select rating, from: 'Rating'
-	click_button 'Create Review'
+	click_button 'Submit Review'
 end
 
 describe 'writing reviews' do 
