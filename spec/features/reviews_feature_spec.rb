@@ -12,11 +12,10 @@ describe 'reviews' do
 	context 'creation' do 
 
 		before do 
-			bob = Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'Bob'
-			sam = Foody.create email: 's@s.com', password: '12345678', password_confirmation: '12345678', username: 'Sam'
-			bob.events.create(title: 'test event', description: 'test description', 
+			@bob = Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'Bob'
+			@bob.events.create(title: 'test event', description: 'test description', 
 			start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00")) 
-			login_as sam
+			login_as @bob
 		end
 
 		it 'should add the review to the event' do 
@@ -29,7 +28,18 @@ describe 'reviews' do
 			visit '/events/2'
 			leave_review('Excellent', 6)
 			expect(page).to have_content 'Excellent (★★★★★★)'
-			expect(page).to have_content 'Review by Sam'
+			expect(page).to have_content 'Review by Bob'
+		end
+
+		context 'users limits' do 
+
+			it 'only 1 per day' do 
+				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: Time.now.ago(60)
+				byebug
+				visit '/events/3'
+				leave_review('No better', 6)
+				expect(page).to have_content 'Unfortunately, you have met your daily limit of reviews for this event.'
+			end
 		end
 
 	end
@@ -45,7 +55,7 @@ describe 'reviews' do
 		end
 
 		it 'should find the average rating of 2 reviews with count' do 
-			visit '/events/3'
+			visit '/events/4'
 			leave_review('Bad', 2)
 			leave_review('Good', 4)
 
