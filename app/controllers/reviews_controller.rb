@@ -7,7 +7,9 @@ class ReviewsController < ApplicationController
 
 	def create
 		@event = Event.find params[:event_id]
-		@review = @event.reviews.create params[:review].permit(:thoughts, :rating)
+		@review = @event.reviews.new params[:review].permit(:thoughts, :rating)
+		@review.foody = current_foody
+		@review.save!
 		flash[:notice] = 'Review created!'
 		redirect_to event_path(@event)
 	end

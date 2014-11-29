@@ -24,6 +24,7 @@
 		<p>
 			<% @event.reviews.each do |review| %>
 				<li><%= review.thoughts %> (<%= star_rating review.rating %>)</li>
+				<li>Review by <%= review.foody.username %></li>
 			<% end %>
 		</p>
 		<p>
