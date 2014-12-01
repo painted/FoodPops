@@ -46,16 +46,16 @@ describe 'reviews' do
 	context 'average' do
 
 		before do 
-			bob = Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'bob'
+			@bob = Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'bob'
 			sam = Foody.create email: 's@s.com', password: '12345678', password_confirmation: '12345678', username: 'sam'
-			bob.events.create(title: 'test event', description: 'test description', 
+			@bob.events.create(title: 'test event', description: 'test description', 
 			start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00")) 
-			login_as bob 
+			login_as @bob 
 		end
 
 		it 'should find the average rating of 2 reviews with count' do 
+			@bob.events.last.reviews.create thoughts: 'Not great', rating: '2', created_at: Time.now.ago(60 * 60 * 60), foody_id: @bob.id
 			visit '/events/4'
-			leave_review('Bad', 2)
 			leave_review('Good', 4)
 
 			expect(page).to have_content '★★★☆☆ (2)'

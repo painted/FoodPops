@@ -11,6 +11,7 @@ describe 'Users' do
 		it 'is asked to login in order to see the list of users' do 
 			visit foodies_path
 			expect(page).not_to have_content 'bob'
+			expect(page).to have_content 'Sign in'
 		end
 
 	end
