@@ -34,8 +34,7 @@ describe 'reviews' do
 		context 'users limits' do 
 
 			it 'only 1 per day' do 
-				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: Time.now.ago(60)
-				byebug
+				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: Time.now.ago(60 * 60 * 20), foody_id: @bob.id
 				visit '/events/3'
 				leave_review('No better', 6)
 				expect(page).to have_content 'Unfortunately, you have met your daily limit of reviews for this event.'
