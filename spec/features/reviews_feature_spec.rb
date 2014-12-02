@@ -39,6 +39,17 @@ describe 'reviews' do
 				leave_review('No better', 6)
 				expect(page).to have_content 'Unfortunately, you have met your daily limit of reviews for this event.'
 			end
+
+			it 'only 5 per month' do 
+				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 2.days.ago, foody_id: @bob.id
+				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 6.days.ago, foody_id: @bob.id
+				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 8.days.ago, foody_id: @bob.id
+				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 12.days.ago, foody_id: @bob.id
+				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 20.days.ago, foody_id: @bob.id
+				visit '/events/4'
+				leave_review('No better', 6)
+				expect(page).to have_content 'Unfortunately, you have met your monthly limit of reviews for this event.'
+			end
 		end
 
 	end
@@ -55,7 +66,7 @@ describe 'reviews' do
 
 		it 'should find the average rating of 2 reviews with count' do 
 			@bob.events.last.reviews.create thoughts: 'Not great', rating: '2', created_at: Time.now.ago(60 * 60 * 60), foody_id: @bob.id
-			visit '/events/4'
+			visit '/events/5'
 			leave_review('Good', 4)
 
 			expect(page).to have_content '★★★☆☆ (2)'
