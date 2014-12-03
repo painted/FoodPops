@@ -13,25 +13,33 @@ Please feel free to check out the current version in construction here: [Food Up
 
 ##Version 1 (Live):
 
-	Creation of an event model and controller with implementation of the [Google Maps API].
+	* Creation of an event model and controller with implementation of the [Google Maps API].
 
 ##Version 2 (Live):
 
-	User creation utilizing Devise.
+	* User creation utilizing Devise.
 
 ##Version 3 (Deprecated): 
 
-	Seeding the database with events taken from the [Eventbrite API].
+	* Seeding the database with events taken from the [Eventbrite API].
+
+##Version 4 (Live): 
+	
+	* Users may add reviews to the events.
+		* Maximum 1 review per event per day.
+		* Maximum 5 reviews per event per month.
 
 ##Future Versions include:
 
-	* Seed database with the following APIs using a cron job: GrubClub, EatWith and  DesignMyNight  (If you are interested in being added please email me at will.allen@paintedltd.co.uk)
+	* Seed database with the following APIs using a cron job: GrubClub, EatWith and  DesignMyNight  (If you are interested in being added please email me at will.allen@paintedltd.co.uk).
 
-	* Add ticket sales
+	* Add ticket sales.
 
-	* Add link to external sites for ticket sales
+	* Add link to external sites for ticket sales.
 
-	* Add possibility for foodies to add photos, comments and ratings to events
+	* Add possibility for foodies to add photos to events.
+
+	* Add online booking for pop-ups.
 
 =========================
 
