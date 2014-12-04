@@ -7,7 +7,7 @@ class Foody < ActiveRecord::Base
   has_many :reviews
   has_attached_file :avatar,
 	:default_url => "/images/original/missing.png",
-	styles: { thumb: '300X300' },
+	styles: { thumb: '300X300#' },
 	storage: :s3,
 	:s3_protocol => :https,
 	s3_credentials: {
