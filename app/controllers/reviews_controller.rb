@@ -7,15 +7,14 @@ class ReviewsController < ApplicationController
 
 	def create
 		find_event
-		@review = @event.reviews.new params[:review].permit(:thoughts, :rating)
+		new_review_with_permitions
 		@user_id = current_foody.id 
 		if foody_review_today?
 			flash[:notice] = 'Unfortunately, you have met your daily limit of reviews for this event.'
 		elsif foody_reviews_this_month == 5
 			flash[:notice] = 'Unfortunately, you have met your monthly limit of reviews for this event.'
 		else 
-			@review.foody = current_foody
-			@review.save!
+			set_foody
 			flash[:notice] = 'Review created!'
 		end
 		redirect_to event_path(@event)
@@ -33,6 +32,15 @@ class ReviewsController < ApplicationController
 
 	def foody_reviews_this_month
 		@event.reviews.where("foody_id = ? AND created_at > ?", @user_id, 31.days.ago).count
+	end
+
+	def set_foody
+		@review.foody = current_foody
+		@review.save!
+	end
+
+	def new_review_with_permitions
+		@review = @event.reviews.new params[:review].permit(:thoughts, :rating)
 	end
 
 end
