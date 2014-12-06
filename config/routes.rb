@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :foodies
   resources :events do 
     resources :reviews
+    resources :photos
   end
   
   resources :foodies, only: [:index]

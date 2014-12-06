@@ -66,7 +66,7 @@ describe 'reviews' do
 
 		it 'should find the average rating of 2 reviews with count' do 
 			@bob.events.last.reviews.create thoughts: 'Not great', rating: '2', created_at: Time.now.ago(60 * 60 * 60), foody_id: @bob.id
-			visit '/events/5'
+			visit '/events/5o-'
 			leave_review('Good', 4)
 
 			expect(page).to have_content '★★★☆☆ (2)'

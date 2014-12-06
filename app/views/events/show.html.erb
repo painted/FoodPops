@@ -28,7 +28,17 @@
 			<% end %>
 		</p>
 		<p>
+			<% @event.photos.each do |photo| %>
+				<li><%= photo.caption %></li>
+				<li><%= image_tag photo.photo.url(:thumb), class: "#{photo.foody.username}sphoto" %></li>
+				<li>Photo by <%= photo.foody.username %></li>
+			<% end %>
+		</p>
+		<p>
 			<%= link_to "Write a review", new_event_review_path(@event) %>
+		</p>
+		<p>
+			<%= link_to "Add a photo", new_event_photo_path(@event) %>
 		</p>
 	</div>
 </div>	

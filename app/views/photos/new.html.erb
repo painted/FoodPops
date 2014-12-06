@@ -1,0 +1,11 @@
+<%= form_for [@event, @photo] do |f| %>
+
+	<%= f.label :caption %><br>
+	<%= f.text_area :caption %><br>
+
+	<%= f.label :photo %><br>
+	<%= f.file_field :photo %><br>
+
+	<%= f.submit 'Submit Photo' %>
+
+<% end %>
