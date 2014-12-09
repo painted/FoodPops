@@ -17,7 +17,7 @@ describe 'photos' do
 			attach_file 'Photo', Rails.root.join('spec/images/FoodTrucks.jpg')
 			click_button 'Submit Photo'
 			expect(page).to have_content 'Test Caption'
-			expect(page).to have_css 'bobsphoto'
+			expect(page).to have_css 'img.bobsphoto'
 		end
 	end
 end
