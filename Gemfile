@@ -60,3 +60,5 @@ group :test, :development do
 	gem 'database_cleaner'
 	gem 'byebug'
 end
+
+gem "codeclimate-test-reporter", group: :test, require: nil

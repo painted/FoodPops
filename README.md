@@ -1,6 +1,6 @@
 ###Food Ups (formerly Food Pops)
 
-[![Code Climate](https://codeclimate.com/github/painted/FoodPops/badges/gpa.svg)](https://codeclimate.com/github/painted/FoodPops)
+[![Code Climate](https://codeclimate.com/github/painted/FoodPops/badges/gpa.svg)](https://codeclimate.com/github/painted/FoodPops) [![Test Coverage](https://codeclimate.com/github/painted/FoodPops/badges/coverage.svg)](https://codeclimate.com/github/painted/FoodPops)
 
 Please feel free to check out the current version in construction here: [Food Ups]
 
