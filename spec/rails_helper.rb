@@ -98,3 +98,10 @@ def create_event
   attach_file 'Image', Rails.root.join('spec/images/FoodTrucks.jpg')
   click_button 'Submit'
 end
+
+def leave_review(thoughts, rating)
+  click_link 'Write a review' 
+  fill_in 'Review', with: thoughts
+  select rating, from: 'Rating'
+  click_button 'Submit Review'
+end

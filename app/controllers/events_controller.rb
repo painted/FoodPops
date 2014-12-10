@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-	before_action :authenticate_foody!, except: [:index]
+	before_action :authenticate_foody!, except: [:index, :show]
 
 	def index
 		@events = Event.all

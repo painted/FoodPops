@@ -1,12 +1,5 @@
 require 'rails_helper'
 
-def leave_review(thoughts, rating)
-	click_link 'Write a review' 
-	fill_in 'Review', with: thoughts
-	select rating, from: 'Rating'
-	click_button 'Submit Review'
-end
-
 describe 'reviews' do 
 
 	context 'creation' do 
@@ -19,13 +12,13 @@ describe 'reviews' do
 		end
 
 		it 'should add the review to the event' do 
-			visit '/events/1'
+			visit '/events/2'
 			leave_review('Aweful', 2)
 			expect(page).to have_content 'Aweful (★★☆☆☆)'
 		end
 
 		it 'should add the review creator username to the review' do 
-			visit '/events/2'
+			visit '/events/3'
 			leave_review('Excellent', 6)
 			expect(page).to have_content 'Excellent (★★★★★★)'
 			expect(page).to have_content 'Review by Bob'
@@ -35,7 +28,7 @@ describe 'reviews' do
 
 			it 'only 1 per day' do 
 				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: Time.now.ago(60 * 60 * 20), foody_id: @bob.id
-				visit '/events/3'
+				visit '/events/4'
 				leave_review('No better', 6)
 				expect(page).to have_content 'Unfortunately, you have met your daily limit of reviews for this event.'
 			end
@@ -46,7 +39,7 @@ describe 'reviews' do
 				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 8.days.ago, foody_id: @bob.id
 				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 12.days.ago, foody_id: @bob.id
 				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 20.days.ago, foody_id: @bob.id
-				visit '/events/4'
+				visit '/events/5'
 				leave_review('No better', 6)
 				expect(page).to have_content 'Unfortunately, you have met your monthly limit of reviews for this event.'
 			end
@@ -66,7 +59,7 @@ describe 'reviews' do
 
 		it 'should find the average rating of 2 reviews with count' do 
 			@bob.events.last.reviews.create thoughts: 'Not great', rating: '2', created_at: Time.now.ago(60 * 60 * 60), foody_id: @bob.id
-			visit '/events/5o-'
+			visit '/events/6'
 			leave_review('Good', 4)
 
 			expect(page).to have_content '★★★☆☆ (2)'
