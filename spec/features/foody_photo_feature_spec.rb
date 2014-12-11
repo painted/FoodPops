@@ -3,15 +3,8 @@ require 'rails_helper'
 describe 'photos' do 
 	context 'foodies logged in' do
 
-		let!(:bob) {Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'bob'}
-		let!(:event){bob.events.create(title: 'test event', description: 'test description', 
-			start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00"))}
-		# before do 
-		# 	@bob = Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'bob'
-		# 	@bob.events.create(title: 'test event', description: 'test description', 
-		# 		start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00"))
-		# 	login_as @bob
-		# end
+		create_bob
+		create_bobs_event
 
 		it 'can add a photo to an event' do
 			login_as bob
@@ -21,7 +14,7 @@ describe 'photos' do
 			attach_file 'Photo', Rails.root.join('spec/images/FoodTrucks.jpg')
 			click_button 'Submit Photo'
 			expect(page).to have_content 'Test Caption'
-			expect(page).to have_css 'img.bobsphoto'
+			expect(page).to have_css 'img.Bobsphoto'
 		end
 	end
 end

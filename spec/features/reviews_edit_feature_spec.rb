@@ -2,9 +2,8 @@ require 'rails_helper'
 
 context 'logged out' do
  
-    let!(:bob) {Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'bob'}
-    let!(:event){bob.events.create(title: 'test event', description: 'test description', 
-        start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00"))}
+    create_bob
+    create_bobs_event
 
     it 'cannot Edit Reviews' do
         login_as bob

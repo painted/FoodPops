@@ -4,11 +4,11 @@ describe 'reviews' do
 
 	context 'creation' do 
 
+		create_bob
+		create_bobs_event
+
 		before do 
-			@bob = Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'Bob'
-			@bob.events.create(title: 'test event', description: 'test description', 
-			start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00")) 
-			login_as @bob
+			login_as bob 
 		end
 
 		it 'should add the review to the event' do 
@@ -27,18 +27,18 @@ describe 'reviews' do
 		context 'users limits' do 
 
 			it 'only 1 per day' do 
-				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: Time.now.ago(60 * 60 * 20), foody_id: @bob.id
+				bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: Time.now.ago(60 * 60 * 20), foody_id: bob.id
 				visit '/events/4'
 				leave_review('No better', 6)
 				expect(page).to have_content 'Unfortunately, you have met your daily limit of reviews for this event.'
 			end
 
 			it 'only 5 per month' do 
-				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 2.days.ago, foody_id: @bob.id
-				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 6.days.ago, foody_id: @bob.id
-				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 8.days.ago, foody_id: @bob.id
-				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 12.days.ago, foody_id: @bob.id
-				@bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 20.days.ago, foody_id: @bob.id
+				bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 2.days.ago, foody_id: bob.id
+				bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 6.days.ago, foody_id: bob.id
+				bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 8.days.ago, foody_id: bob.id
+				bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 12.days.ago, foody_id: bob.id
+				bob.events.last.reviews.create thoughts: 'The Best', rating: '6', created_at: 20.days.ago, foody_id: bob.id
 				visit '/events/5'
 				leave_review('No better', 6)
 				expect(page).to have_content 'Unfortunately, you have met your monthly limit of reviews for this event.'

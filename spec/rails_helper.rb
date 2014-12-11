@@ -105,3 +105,15 @@ def leave_review(thoughts, rating)
   select rating, from: 'Rating'
   click_button 'Submit Review'
 end
+
+def create_bob
+  let!(:bob) {Foody.create email: 'b@b.com', password: '12345678', password_confirmation: '12345678', username: 'Bob'}
+end
+
+def create_bobs_event
+  let!(:event){bob.events.create(title: 'test event', description: 'test description', address: '25 City Road', city: 'London', postcode: 'EC1V 2QH',
+      start_date: Time.new(2014, 11, 5, 12, 0, 0, "+00:00"), end_date: Time.new(2014, 11, 7, 14, 0, 0, "+00:00"))}
+end
+
+
+
