@@ -29,6 +29,11 @@ Please feel free to check out the current version in construction here: [Food Up
 		* Maximum 1 review per event per day.
 		* Maximum 5 reviews per event per month.
 
+##Version 5 (Live): 
+	
+	* Users may add photos to events.
+	* No styling.
+
 ##Future Versions include:
 
 	* Seed database with the following APIs using a cron job: GrubClub, EatWith and  DesignMyNight  (If you are interested in being added please email me at will.allen@paintedltd.co.uk).
@@ -37,7 +42,7 @@ Please feel free to check out the current version in construction here: [Food Up
 
 	* Add link to external sites for ticket sales.
 
-	* Add possibility for foodies to add photos to events.
+	* Improved Styling
 
 	* Add online booking for pop-ups.
 
