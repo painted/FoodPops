@@ -29,10 +29,11 @@ Please feel free to check out the current version in construction here: [Food Up
 		* Maximum 1 review per event per day.
 		* Maximum 5 reviews per event per month.
 
-##Version 5 (Live): 
+##Version 5 (Live on Heroku): 
 	
 	* Users may add photos to events.
 	* No styling.
+
 
 ##Future Versions include:
 
@@ -51,4 +52,4 @@ Please feel free to check out the current version in construction here: [Food Up
 [Food Ups]:https://foodups.herokuapp.com/
 [Google Maps API]:https://developers.google.com/maps/
 [Eventbrite API]:http://developer.eventbrite.com/
-
+[Live on Heroku]:https://foodups.herokuapp.com/
